@@ -16,7 +16,6 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-
 SCHOOLNAME = "BJTU"
 
 FLG_AGAIN = "AGAIN"
