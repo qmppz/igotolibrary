@@ -16,7 +16,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-#北京交通大学
+
 SCHOOLNAME = "BJTU"
 
 FLG_AGAIN = "AGAIN"
@@ -45,7 +45,7 @@ mcookies = dict(FROM_TYPE="weixin" ,wechatSESS_ID="you sessionid",
 #类
 class GlobalValue :
 
-	#北京交通大学
+
 	#[座位标号：坐标],不同学校的座位表不同
 	R1_BJTU={
 	#第一自习室座位编码 		252 个
