@@ -68,7 +68,7 @@ def reserveSeatFunc(mheaders,mcookies,roomId,seatId):
 
 	gv = GlobalValue()
 	roomValue = gv.DICT_ROOM_KV["ROOM_1" if roomId == "1" else "ROOM_2" ]
-	seatValue = (gv.R1_SEATTABLE if roomId == "1" else gv.R1_SEATTABLE)[seatId]
+	seatValue = (gv.R1_SEATTABLE if roomId == "1" else gv.R2_SEATTABLE)[seatId]
 
 	url_zuowei ="http://wechat.v2.traceint.com/index.php/reserve/index.html?f=wechat"
 	url_dixzixishi = "http://wechat.v2.traceint.com/index.php/reserve/layout/libid=%s.html&1523076408"%(roomValue)
