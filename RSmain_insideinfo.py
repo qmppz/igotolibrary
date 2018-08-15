@@ -41,7 +41,7 @@ CONFIG_NAME = "RSconf.ini"
 #section标签为：[openIdConf_2018-04-08]
 
 RUNTIME =  int(time.mktime(time.strptime(time.strftime('%Y-%m-%d',time.localtime(time.time())) \
-			+" 23:11:00", "%Y-%m-%d %H:%M:%S")  ))   #"2018-03-05 11:39:19" 
+			+" 20:00:00", "%Y-%m-%d %H:%M:%S")  ))   #"2018-03-05 11:39:19" 
 READYTIME = RUNTIME - 30 #提前 0.5 分钟准备
 delayTime = 10
 
