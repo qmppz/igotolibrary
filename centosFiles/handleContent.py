@@ -86,7 +86,7 @@ def replyMsg(str_flg,str_info):
 		#图灵机器人
 		api_url = 'http://www.tuling123.com/openapi/api'
 		apikey = 'APIKey'
-		data = {'key': '3869ad1b82cc41ffa4757e7799c88609',
+		data = {'key': '3869ab82cc41ffa457e7799c88609',
 					'info': str_info}
 		req = requests.post(api_url, data=data).text
 		replys = json.loads(req,encoding="UTF-8")['text']
