@@ -38,7 +38,7 @@
 # 部署demo
 我已将工程部署到了微信 《**为了学习**》公众号，欢迎测试，但是现在服务已经暂停。
 
-![mahua](https://github.com/RenjiaLu9527/igotolibrary/blob/master/qrcode.bmp)
+> ![mahua](https://github.com/RenjiaLu9527/igotolibrary/blob/master/qrcode.bmp)
 
 
 
