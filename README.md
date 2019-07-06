@@ -13,17 +13,21 @@
 * 1. 先抓包获取sessionid
 * 2. 填入配置文件;
     > 格式为:
-    > ```[user1]=[sessionid],[第几自习室]，[几号座位]，[第几自习室]，[几号座位]  ...```
+    > ```
+    > [user1]=[sessionid],[第几自习室]，[几号座位]，[第几自习室]，[几号座位]  ...
+    > ```
     > 比如:
-    > ```user1 = 29ijfnxxxxxxxxxxxxx24dbsl6,1,80,2,81 ```
+    > ```
+    > user1 = 29ijfnxxxxxxxxxxxxx24dbsl6,1,80,2,81 
+    > ```
     > 代表你想抢的座位是第一自习室80号座位，备选座位是第二自习室81号座位。
   
 * 填写完成保存退出，然后当前目录启动```cmd```，输入
     > ```shell
     > python RSmain.py 
     > ```
-
- 即可运行。
+  即可运行。
+ 
  
 ------
  
@@ -35,7 +39,7 @@
 ![mahua](https://github.com/RenjiaLu9527/igotolibrary/blob/master/qrcode.bmp)
 
 
-有问题可留言或联系管理员
+> # 有问题可留言或联系管理员
 
 
 
