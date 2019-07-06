@@ -7,7 +7,7 @@
 ------
 
 # igotolibrary-抢座助手
-![正常大小的圆角矩形](https://img.shields.io/badge/language-swift-green.svg)
+![正常大小的圆角矩形](https://img.shields.io/badge/language-python3.x-green.svg)
 ## 简介
 一个简单的 Python 爬虫，通过 *Charles* 抓包分析公众号《**我去图书馆**》、《**来选座**》的服务通信协议，获取自习室和座位表信息，使用```Python```+```requests```库模拟预定座位的流程，实现定时/实时自动抢座。
 
