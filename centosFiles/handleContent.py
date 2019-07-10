@@ -65,7 +65,7 @@ mcookies = dict(FROM_TYPE="weixin" ,wechatSESS_ID="35421io3v7cobh00d0cmu315p7",
 	Hm_lvt_7ecd21a13263a714793f376c18038a87="1521734275,1524209281",
 	Hm_lpvt_7ecd21a13263a714793f376c18038a87=str(int(time.time())))
 
-ADMINOPENID = "omcb3wrbvkwvkigwryfi0csdanlk"
+ADMINOPENID = "qwertsfdadfghdsadfghgfdgsfad"
 
 CONFIG_NAME = "RSconf.ini"
 #section标签为：[openIdConf_2018-04-08]
