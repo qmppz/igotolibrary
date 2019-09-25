@@ -7,6 +7,16 @@ time: 20190707
 description: reserve a seat again
 '''
 
+import requests
+import json, time, random, re, sys, copy, traceback
+from bs4 import BeautifulSoup
+import execjs
+import threading
+import utils, crawldata
+from aip import AipOcr
+
+# ...
+
 '''
 others function...
 '''
