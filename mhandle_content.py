@@ -70,7 +70,7 @@ def get_reply_msg(str_info, str_flg='ROBOT', sess=object):
             },
             "userInfo":
             {
-                "apiKey": ["b5f0fb8408a5490a8bbd844772514798", "00410b2abac142e9941af7c8f5604e6c", "808a6d0f20bd47a28e575a9561900038"][random.randint(0, 3)],
+                "apiKey": ["xxxxxxxxx", "xxxxxxxxx", "xxxxxxxxxxxx"][random.randint(0, 3)],
                 # 改为自己申请的key
                 "userId": "0001"  # 用户唯一标识(随便填, 非密钥)
             }

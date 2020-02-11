@@ -137,9 +137,10 @@ class Reserve(threading.Thread):
     @utils.catch_exception
     def get_verifycode(self, client=object, imageUrl=''):
 
-        APP_ID = '10690100'
-        API_KEY = 'reFMjIqdUT6Q983odq60Qp0M'
-        SECRET_KEY = 'aw5DLqn0YpzsuMNNxWYFC21MUdESvfzO'
+        # 填写自己的 baidu-ocr api信息
+        APP_ID = 'xxxxxxxxxx'
+        API_KEY = 'xxxxxxxxxxxx'
+        SECRET_KEY = 'xxxxxxxxxxxxxxx'
 
         options = {}
         options["recognize_granularity"] = "big"
