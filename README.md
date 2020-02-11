@@ -19,6 +19,12 @@
 
 ------
 
+## 抓包过程分析
+* [[igtl-again]我去图书馆-抢座主逻辑详解](https://blog.csdn.net/RenjiaLu9527/article/details/96843605)
+* [[igtl-again]我去图书馆-抢座主逻辑详解](https://zhuanlan.zhihu.com/p/74706139)
+
+------
+
 ## 项目结构
 分为两个部分 
 * mainloop 执行抢座任务部分
@@ -27,7 +33,6 @@
 如图:
 
 > ![igtl_again](https://github.com/qmppz/igotolibrary/blob/master/igtl-again.png)
-
 
 > * 有疑问可提交 **Issues**
 > * 有修改可提交 **Pull requests**
