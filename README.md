@@ -39,6 +39,15 @@
 
 ------
 
+## 接下来可改进的地方 TODOLIST
+1. 一些细节: [TODOLIST.md](https://github.com/RenjiaLu9527/igotolibrary/TODOLIST.md);
+2. reserve.py 模块弃用线程, 改用协程, 节约资源, 增大并发任务量;
+3. 尝试 pyv8 执行js; 加快 hexcode 字段的计算;
+4. 精简 reserve 函数, 将不重要的的参数进行限定, 精简抢座流程步骤; 
+5. ...(待补充)
+
+------
+
 ## 部署demo
 我已将工程部署到了微信 《**为了学习**》公众号，欢迎测试，服务启动中...
 
