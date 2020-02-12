@@ -27,15 +27,15 @@
 
 ## 项目结构
 分为两个部分 
-* mainloop 执行抢座任务部分
-* mhandle_content 指令解析部分
+* mainloop 抢座任务执行部分
+* mhandle_content 指令解析验证储存部分
 
 如图:
 
 > ![igtl_again](https://github.com/qmppz/igotolibrary/blob/master/igtl-again.png)
 
 > * 有疑问可提交 **Issues**
-> * 有修改可提交 **Pull requests**
+> * 有修改可在 **dev** 分支提交 **Pull requests** 
 
 ------
 
