@@ -35,15 +35,15 @@
 > ![igtl_again](https://github.com/qmppz/igotolibrary/blob/master/igtl-again.png)
 
 > * 有疑问可提交 **Issues**
-> * 有修改可在 **dev** 分支提交 **Pull requests** 
+> * 有修改可提交到 **dev** 分支后 **Pull requests** 
 
 ------
 
 ## 接下来可改进的地方 TODOLIST
 1. 一些细节: [TODOLIST.md](https://github.com/qmppz/igotolibrary/blob/master/TODOLIST.md);
-2. reserve.py 模块弃用线程, 改用协程, 节约资源, 增大并发任务量;
-3. 尝试 pyv8 执行js; 加快 hexcode 字段的计算;
-4. 精简 reserve 函数, 将不重要的的参数进行限定, 精简抢座流程步骤; 
+2. ```reserve.py``` 模块弃用线程, 改用协程, 节约资源, 增大并发任务量;
+3. 尝试换成 ```pyv8```库执行js; 加快 ```hex_code``` 字段的计算;
+4. 开发一个极速版 ```personal_reserve```, 去掉冗余的参数信息只保留核心的步骤, 最大可能的加速抢座;
 5. ...(待补充)
 
 ------
