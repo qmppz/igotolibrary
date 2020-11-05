@@ -52,6 +52,12 @@ class GlobalValue :
 				}
 
 	def __init__(self):
+     """
+     Initialize the object
+
+     Args:
+         self: (todo): write your description
+     """
 		pass
 
 mheaders =  {
@@ -80,6 +86,13 @@ HELP_INFO = "按以下格式发送消息添加任务即可帮您在开放预约�
 
 #返回信息
 def replyMsg(str_flg,str_info):
+    """
+    Return the reply for a reply
+
+    Args:
+        str_flg: (str): write your description
+        str_info: (str): write your description
+    """
 	if str_flg == "ROBOT" :
 		if str_info.find("抢座") >= 0 or str_info.find("帮助") >= 0  :
 			return HELP_INFO
@@ -103,6 +116,13 @@ def replyMsg(str_flg,str_info):
 
 #保存用户添加的任务信息
 def addTask(openId,list_content):
+    """
+    Add a new task
+
+    Args:
+        openId: (str): write your description
+        list_content: (todo): write your description
+    """
 
 	gv = GlobalValue()
 	try:
@@ -166,6 +186,12 @@ def addTask(openId,list_content):
 
 #取消某个用户的任务
 def cancelTask(openId):
+    """
+    Cancel a task
+
+    Args:
+        openId: (str): write your description
+    """
 	todaySection = "openIdConf_%s"%time.strftime('%Y-%m-%d',time.localtime(time.time()))
 	try:
 		#准备时间-读取配置文件
@@ -183,6 +209,11 @@ def cancelTask(openId):
 
 #返回当前配置信息
 def getAdminConfig():
+    """
+    Get the status of the currently openid
+
+    Args:
+    """
 	todaySection = "openIdConf_%s"%time.strftime('%Y-%m-%d',time.localtime(time.time()))
 	try:
 		#准备时间-读取配置文件
@@ -199,6 +230,13 @@ def getAdminConfig():
 #分析原始的Content，判断是否为指令，再调用相应的函数
 #MsgContent 的格式：" #抢座 ，sessid , 1    ，123 ,     2    ，189  "
 def parseContent(openId,MsgContent):
+    """
+    Parse content of the content
+
+    Args:
+        openId: (str): write your description
+        MsgContent: (str): write your description
+    """
 	#由于配置文件内容全部为小写
 	openId = openId.lower()
 	try:

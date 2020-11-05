@@ -16,6 +16,11 @@ urls = (
 
 
 def start_api_server():
+    """
+    Starts the web server.
+
+    Args:
+    """
     sys.argv.append('0.0.0.0:%s' % config.API_PORT)
     app = web.application(urls, globals())
     app.run()
@@ -23,6 +28,12 @@ def start_api_server():
 
 class select(object):
     def GET(self):
+        """
+        Execute the query
+
+        Args:
+            self: (todo): write your description
+        """
         inputs = web.input()
         json_result = json.dumps(sqlhelper.select(inputs.get('count', None), inputs))
         return json_result
@@ -32,6 +43,12 @@ class delete(object):
     params = {}
 
     def GET(self):
+        """
+        Execute a query.
+
+        Args:
+            self: (todo): write your description
+        """
         inputs = web.input()
         json_result = json.dumps(sqlhelper.delete(inputs))
         return json_result

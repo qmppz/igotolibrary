@@ -12,6 +12,12 @@ sys.setdefaultencoding('utf-8')
 
 class Handle(object):
         def GET(self):
+            """
+            Returns the signature of the request.
+
+            Args:
+                self: (todo): write your description
+            """
                 try:
                         data = web.input()
                         if len(data) == 0:
@@ -35,6 +41,12 @@ class Handle(object):
                 except Exception, Argument:
                         return Argument
         def POST(self):
+            """
+            Send a post request
+
+            Args:
+                self: (todo): write your description
+            """
                 try:
                         webData = web.data()
                         print "Handle Post webdata is ", webData

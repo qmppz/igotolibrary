@@ -6,16 +6,41 @@ from db.ISqlHelper import ISqlHelper
 
 class MongoHelper(ISqlHelper):
     def __init__(self):
+        """
+        Initialize the mongo client.
+
+        Args:
+            self: (todo): write your description
+        """
         self.client = pymongo.MongoClient(DB_CONFIG['DB_CONNECT_STRING'], connect=False)
 
     def init_db(self):
+        """
+        Initialize the database.
+
+        Args:
+            self: (todo): write your description
+        """
         self.db = self.client.proxy
         self.proxys = self.db.proxys
 
     def drop_db(self):
+        """
+        Drop the database. database.
+
+        Args:
+            self: (todo): write your description
+        """
         self.client.drop_database(self.db)
 
     def insert(self, value=None):
+        """
+        Inserts a new ipvyset ).
+
+        Args:
+            self: (todo): write your description
+            value: (todo): write your description
+        """
         if value:
             proxy = dict(ip=value['ip'], port=value['port'], types=value['types'], protocol=value['protocol'],
                          country=value['country'],
@@ -23,6 +48,13 @@ class MongoHelper(ISqlHelper):
             self.proxys.insert(proxy)
 
     def delete(self, conditions=None):
+        """
+        Delete conditions from conditions object.
+
+        Args:
+            self: (todo): write your description
+            conditions: (todo): write your description
+        """
         if conditions:
             self.proxys.remove(conditions)
             return ('deleteNum', 'ok')
@@ -30,6 +62,14 @@ class MongoHelper(ISqlHelper):
             return ('deleteNum', 'None')
 
     def update(self, conditions=None, value=None):
+        """
+        Updates conditions using the given conditions.
+
+        Args:
+            self: (todo): write your description
+            conditions: (todo): write your description
+            value: (todo): write your description
+        """
         # update({"UserName":"libing"},{"$set":{"Email":"libing@126.com","Password":"123"}})
         if conditions and value:
             self.proxys.update(conditions, {"$set": value})
@@ -38,6 +78,14 @@ class MongoHelper(ISqlHelper):
             return {'updateNum': 'fail'}
 
     def select(self, count=None, conditions=None):
+        """
+        Selects a list of given conditions.
+
+        Args:
+            self: (todo): write your description
+            count: (int): write your description
+            conditions: (dict): write your description
+        """
         if count:
             count = int(count)
         else:

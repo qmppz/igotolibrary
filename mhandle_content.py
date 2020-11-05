@@ -49,6 +49,15 @@ get_reply_msg from robot
 
 
 def get_reply_msg(str_info, str_flg='ROBOT', sess=object):
+    """
+    Returns the reply message.
+
+    Args:
+        str_info: (str): write your description
+        str_flg: (str): write your description
+        sess: (todo): write your description
+        object: (todo): write your description
+    """
     if str_flg == "ROBOT":
         # if str_info.find("抢座") >= 0 or str_info.find("帮助") >= 0  :
         #     return ' '
@@ -114,6 +123,12 @@ class CmdFunction():
     }
 
     def getico(flag='emmm'):
+        """
+        Return a random face.
+
+        Args:
+            flag: (todo): write your description
+        """
         if flag == -1:
             flag = 'negative'
         elif flag == 1:
@@ -127,6 +142,13 @@ class CmdFunction():
     '''
     # @utils.catch_exception
     def modify_opentime(userid, content):
+        """
+        Modify a - opentime.
+
+        Args:
+            userid: (todo): write your description
+            content: (str): write your description
+        """
         # xgqzsj, bjtu, 20:35
         # opentime : 20:35
         _, schl_abbr, opentime = content.split(CF.USER_CMD_SPLTCH)
@@ -152,6 +174,13 @@ class CmdFunction():
     check school info if exist
     '''
     def check_school(userid, content):
+        """
+        Check if a userid of a user.
+
+        Args:
+            userid: (todo): write your description
+            content: (str): write your description
+        """
         check_cmd_str = '#查询; 学校英文简称'
         info = {
             'verify_failed_format': CmdFunction.getico(-1) + '操作失败:【指令格式可能有误】;请按如下指令查询学校信息:\n\n' + check_cmd_str,
@@ -183,6 +212,13 @@ class CmdFunction():
     force_add_school_info
     '''
     def force_add_school_info(userid, content):
+        """
+        Force a userid
+
+        Args:
+            userid: (todo): write your description
+            content: (str): write your description
+        """
         func_name = '[force_add_school_info]'
         debug_p(func_name, 'content=', content)
         return CmdFunction.add_school_info(userid=userid, content=content, force=True)
@@ -276,6 +312,13 @@ class CmdFunction():
     parse trace,return serverid wechat_sess_id  # and two time value
     '''
     def parse_trace(userid, content):
+        """
+        Parse a trace
+
+        Args:
+            userid: (todo): write your description
+            content: (str): write your description
+        """
         # verify content format
         info = {
             'verify_failed': CmdFunction.getico(-1) + '您发送的 trace 校验格式不通过，请重新获取后再尝试！'
@@ -313,6 +356,13 @@ class CmdFunction():
     realtime
     '''
     def realtime(userid, content):
+        """
+        Return the real real realtime for a user.
+
+        Args:
+            userid: (str): write your description
+            content: (str): write your description
+        """
         func_name = '#realtime'
         debug_p('func_name=', func_name, 'userid, content', userid, content)
         return CmdFunction.grab_seat(userid, content, task_kind=CF.TASK_KIND['realtime'])
@@ -493,6 +543,13 @@ class CmdFunction():
     query_realtime_result
     '''
     def query_realtime_result(userid, content):
+        """
+        Query realtime result
+
+        Args:
+            userid: (todo): write your description
+            content: (todo): write your description
+        """
         func_name = '[query_realtime_result]'
         debug_p(func_name, 'userid, content', userid, content)
         return CmdFunction.query_result(userid, content, task_kind=CF.TASK_KIND['realtime'])
@@ -503,6 +560,15 @@ class CmdFunction():
 
     '''
     def parse_dct_from_mc(result_dct={}, char_limit=CF.CHAR_LIMIT):
+        """
+        Parse a dct result.
+
+        Args:
+            result_dct: (dict): write your description
+            char_limit: (str): write your description
+            CF: (todo): write your description
+            CHAR_LIMIT: (str): write your description
+        """
         # exe trace format
         # TRACE_FORMAT = {
         #     'head': '状态:{status}\n[{school_name}-{schl_abbr}_{task_id}]\n{submit_time} 提交\n',
@@ -541,6 +607,16 @@ class CmdFunction():
     query task result
     '''
     def query_result(userid, content, task_kind=CF.TASK_KIND['reserve']):
+        """
+        Query user result
+
+        Args:
+            userid: (todo): write your description
+            content: (todo): write your description
+            task_kind: (str): write your description
+            CF: (todo): write your description
+            TASK_KIND: (str): write your description
+        """
         func_name = '[query_result]'
         debug_p('func_name=', func_name, 'userid, content', userid, content)
         info = {
@@ -577,6 +653,14 @@ class CmdFunction():
 
     # verify_seat, return clssrm_crdnt=[(classroom_name, coordinate), () ... ]
     def verify_seat(lib_seat_ls, user_conf_dict, num_0_value='任意'):
+        """
+        Verify that there is_seat.
+
+        Args:
+            lib_seat_ls: (str): write your description
+            user_conf_dict: (dict): write your description
+            num_0_value: (int): write your description
+        """
         clssrm_crdnt = []
         for libid, seatnum in lib_seat_ls:
             if int(libid) <= 0:
@@ -640,6 +724,12 @@ class ExtraInfo(object):
 
     # get_random_info
     def get_random_info(whichone=-1):
+        """
+        Returns a random info object.
+
+        Args:
+            whichone: (str): write your description
+        """
         info = list(ExtraInfo.I.values()) + ExtraInfo.others
         return ExtraInfo.prefix + random.choice(info) + ExtraInfo.cmd_help
 
@@ -650,6 +740,15 @@ return response
 '''
 @utils.catch_exception
 def handle_msg(userid, content, my_id, LOCAL=False):
+    """
+    Handle a message.
+
+    Args:
+        userid: (todo): write your description
+        content: (todo): write your description
+        my_id: (str): write your description
+        LOCAL: (str): write your description
+    """
     # transfer content from byte to str
     m_content = content
     if isinstance(content, bytes):

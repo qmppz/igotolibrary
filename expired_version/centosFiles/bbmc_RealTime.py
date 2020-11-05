@@ -69,11 +69,28 @@ class GlobalValue :
 			
 
 	def __init__(self):
+     """
+     Initialize the object
+
+     Args:
+         self: (todo): write your description
+     """
 		pass
 
 
 #订座函数 #ERROR  #FAILED 都要重试
 def reserveSeatFunc(mheaders,mcookies,roomValue,seatValue,roomId,seatId):
+    """
+    Function to reserve room
+
+    Args:
+        mheaders: (dict): write your description
+        mcookies: (todo): write your description
+        roomValue: (todo): write your description
+        seatValue: (todo): write your description
+        roomId: (todo): write your description
+        seatId: (todo): write your description
+    """
 
 	roomId = roomValue
 	seatId = seatValue
@@ -111,6 +128,13 @@ def reserveSeatFunc(mheaders,mcookies,roomValue,seatValue,roomId,seatId):
 
 #判断有没有空位
 def getValidSeat(mheaders,mcookies):
+    """
+    Downloads the html for a given url.
+
+    Args:
+        mheaders: (dict): write your description
+        mcookies: (list): write your description
+    """
 
 	url_zuowei ="http://wechat.v2.traceint.com/index.php/reserve/index.html?f=wechat"
 	url_di1zixishi = "http://wechat.v2.traceint.com/index.php/reserve/layout/libid=176.html&1524369642"
@@ -151,6 +175,13 @@ def getValidSeat(mheaders,mcookies):
 
 #验证sessionid是否失效 0-失效 1-有效
 def isValid(mheaders,mcookies):
+    """
+    Check if a request is a request is available.
+
+    Args:
+        mheaders: (dict): write your description
+        mcookies: (list): write your description
+    """
 
 	url_zuowei ="http://wechat.v2.traceint.com/index.php/reserve/index.html?f=wechat"
 

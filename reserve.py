@@ -27,6 +27,11 @@ init_start
 '''
 @utils.catch_exception
 def init_start():
+    """
+    Initialize a new task
+
+    Args:
+    """
 
     #read global config file
     splt_ch = '|'
@@ -79,6 +84,15 @@ class Reserve(threading.Thread):
     init
     '''
     def __init__(self, threadID='threadID', thread_name='thread_name', task_info_ls=[]):
+        """
+        Initialize threads
+
+        Args:
+            self: (todo): write your description
+            threadID: (int): write your description
+            thread_name: (str): write your description
+            task_info_ls: (todo): write your description
+        """
         threading.Thread.__init__(self)
 
         requests.adapters.DEFAULT_RETRIES = 5
@@ -117,6 +131,13 @@ class Reserve(threading.Thread):
     prepare a task, return dict
     '''
     def task_prepare(self, task):
+        """
+        Prepare the task
+
+        Args:
+            self: (todo): write your description
+            task: (todo): write your description
+        """
 
         if self.a_task.platform == CF.PLATFORM['IGTL']:
             self.a_task.M_COOKIES['SERVERID'] = task['serverid'].split('=')[-1]
@@ -136,6 +157,15 @@ class Reserve(threading.Thread):
     '''
     @utils.catch_exception
     def get_verifycode(self, client=object, imageUrl=''):
+        """
+        Get a json - serialized image
+
+        Args:
+            self: (todo): write your description
+            client: (str): write your description
+            object: (todo): write your description
+            imageUrl: (str): write your description
+        """
 
         # 填写自己的 baidu-ocr api信息
         APP_ID = 'xxxxxxxxxx'
@@ -181,6 +211,13 @@ class Reserve(threading.Thread):
     return [status, feedback]
     '''
     def parse_response(self, response):
+        """
+        Parse the response from the server
+
+        Args:
+            self: (todo): write your description
+            response: (todo): write your description
+        """
         emoji_flag = {
             'SUCC': '✅',
             'FAILED': '❌',
@@ -210,6 +247,15 @@ class Reserve(threading.Thread):
     return candidate_seat_crdnt , type = list  [(seat_num, coordinate), (), ... ]
     '''
     def get_empty_seat(self, html_seatmap='', number=1, discard_seatnum='0'):
+        """
+        Return a random empty set of tracks.
+
+        Args:
+            self: (todo): write your description
+            html_seatmap: (str): write your description
+            number: (int): write your description
+            discard_seatnum: (int): write your description
+        """
         empty_seat_dct = crawldata.get_seatmap(html_seatmap=html_seatmap, return_empty_seat=True)
         empty_seat_dct.pop(discard_seatnum, 'default_value')
         candidate_seat_crdnt = random.sample(empty_seat_dct.items(), min(number, len(empty_seat_dct)))
@@ -222,6 +268,13 @@ class Reserve(threading.Thread):
     continue mean failed
     '''
     def check_msg(self, msg):
+        """
+        Checks the message is valid.
+
+        Args:
+            self: (todo): write your description
+            msg: (str): write your description
+        """
         key_dct = {
             'completed': {
                 '成功',
@@ -255,6 +308,21 @@ class Reserve(threading.Thread):
     '''
     @utils.catch_exception
     def reserve_a_seat(self, m_libid, m_clssrm, m_seat_num, m_coordinate, all_lib_clssrm, get_hexcodejs_from_url, verify_key, reserve_url_prefix, lib_seat_info):
+        """
+        Reserve a m_lib library.
+
+        Args:
+            self: (todo): write your description
+            m_libid: (int): write your description
+            m_clssrm: (todo): write your description
+            m_seat_num: (int): write your description
+            m_coordinate: (todo): write your description
+            all_lib_clssrm: (dict): write your description
+            get_hexcodejs_from_url: (str): write your description
+            verify_key: (str): write your description
+            reserve_url_prefix: (str): write your description
+            lib_seat_info: (todo): write your description
+        """
         # func_name = 'reserve_a_seat' + str('threadid='+str(self.threadID) + ' thread_name='+str(self.thread_name)+' counter='+str(self.counter))
         func_name = '[r_s] thread='+str(self.thread_name)+'|  '
         debug_p(func_name, 'lib_seat_info=', lib_seat_info, 'libid', m_libid,  'coordinate', m_coordinate)
@@ -465,6 +533,13 @@ class Reserve(threading.Thread):
     handle db and refresh memcache
     '''
     def task_ending(self, task):
+        """
+        Called when task.
+
+        Args:
+            self: (todo): write your description
+            task: (todo): write your description
+        """
         func_name = '[task_ending]'
         none_value = '-'
         succ_failed = 'FAILED' if self.trace_dct_ls[-1].get('code', none_value) != 0 else 'SUCC'
@@ -525,6 +600,12 @@ class Reserve(threading.Thread):
     '''
     @utils.catch_exception
     def run(self):
+        """
+        Run a single task.
+
+        Args:
+            self: (todo): write your description
+        """
         func_name = '[run] ' + str(self.thread_name)
         debug_p(func_name, 'thread start run')
 

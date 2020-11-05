@@ -14,6 +14,13 @@ logger = logging.getLogger('util')
 
 class IPAddresss:
     def __init__(self, ipdbFile):
+        """
+        Initialize database
+
+        Args:
+            self: (todo): write your description
+            ipdbFile: (str): write your description
+        """
         self.ipdb = open(ipdbFile, "rb")
         str = self.ipdb.read(8)
         (self.firstIndex, self.lastIndex) = struct.unpack('II', str)
@@ -21,10 +28,23 @@ class IPAddresss:
         # print self.getVersion(), u" 纪录总数: %d 条 "%(self.indexCount)
 
     def getVersion(self):
+        """
+        Get the version of the server.
+
+        Args:
+            self: (todo): write your description
+        """
         s = self.getIpAddr(0xffffff00)
         return s
 
     def getAreaAddr(self, offset=0):
+        """
+        Return the ip address of the address.
+
+        Args:
+            self: (todo): write your description
+            offset: (int): write your description
+        """
         if offset:
             self.ipdb.seek(offset)
         str = self.ipdb.read(1)
@@ -40,6 +60,14 @@ class IPAddresss:
             return self.getString(offset)
 
     def getAddr(self, offset, ip=0):
+        """
+        Read an ip address from the packet.
+
+        Args:
+            self: (todo): write your description
+            offset: (int): write your description
+            ip: (todo): write your description
+        """
         self.ipdb.seek(offset + 4)
         countryAddr = text_("")
         areaAddr = text_("")
@@ -65,6 +93,14 @@ class IPAddresss:
         return countryAddr + text_(" ") + areaAddr
 
     def dump(self, first, last):
+        """
+        Dump the icalendar : param to the i { i { i { i { i }.
+
+        Args:
+            self: (todo): write your description
+            first: (todo): write your description
+            last: (todo): write your description
+        """
         if last > self.indexCount:
             last = self.indexCount
         for index in range(first, last):
@@ -78,6 +114,13 @@ class IPAddresss:
             logger.info("%d %s %s" % (index, self.ip2str(ip), address))
 
     def setIpRange(self, index):
+        """
+        Set the ip address } range
+
+        Args:
+            self: (todo): write your description
+            index: (int): write your description
+        """
         offset = self.firstIndex + index * 7
         self.ipdb.seek(offset)
         buf = self.ipdb.read(7)
@@ -88,6 +131,13 @@ class IPAddresss:
         (self.curEndIp,) = struct.unpack("I", buf)
 
     def getIpAddr(self, ip):
+        """
+        Return the ip address of an ipv6.
+
+        Args:
+            self: (todo): write your description
+            ip: (todo): write your description
+        """
         L = 0
         R = self.indexCount - 1
         while L < R - 1:
@@ -113,12 +163,26 @@ class IPAddresss:
         return address
 
     def getIpRange(self, ip):
+        """
+        Return the ip range of the ip address
+
+        Args:
+            self: (todo): write your description
+            ip: (todo): write your description
+        """
         self.getIpAddr(ip)
         range = self.ip2str(self.curStartIp) + ' - ' \
                 + self.ip2str(self.curEndIp)
         return range
 
     def getString(self, offset=0):
+        """
+        Get a string representation of this string.
+
+        Args:
+            self: (todo): write your description
+            offset: (int): write your description
+        """
         if offset:
             self.ipdb.seek(offset)
         str = b''
@@ -131,13 +195,34 @@ class IPAddresss:
         return str.decode('gbk')
 
     def ip2str(self, ip):
+        """
+        Convert ip address to network string.
+
+        Args:
+            self: (todo): write your description
+            ip: (todo): write your description
+        """
         return str(ip >> 24) + '.' + str((ip >> 16) & 0xff) + '.' + str((ip >> 8) & 0xff) + '.' + str(ip & 0xff)
 
     def str2ip(self, s):
+        """
+        Convert a ipv6 address to a network address.
+
+        Args:
+            self: (todo): write your description
+            s: (todo): write your description
+        """
         (ip,) = struct.unpack('I', socket.inet_aton(s))
         return ((ip >> 24) & 0xff) | ((ip & 0xff) << 24) | ((ip >> 8) & 0xff00) | ((ip & 0xff00) << 8)
 
     def getLong3(self, offset=0):
+        """
+        Read a 4 bytes from the given offset.
+
+        Args:
+            self: (todo): write your description
+            offset: (int): write your description
+        """
         if offset:
             self.ipdb.seek(offset)
         str = self.ipdb.read(3)

@@ -176,6 +176,11 @@ USER_AGENTS = [
 
 
 def get_header():
+    """
+    Generate header.
+
+    Args:
+    """
     return {
         'User-Agent': random.choice(USER_AGENTS),
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',

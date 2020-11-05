@@ -11,6 +11,12 @@ from lxml import etree
 
 class Html_Parser(object):
     def __init__(self):
+        """
+        Initialize the ip address.
+
+        Args:
+            self: (todo): write your description
+        """
         self.ips = IPAddresss(QQWRY_PATH)
 
     def parse(self, response, parser):
@@ -123,6 +129,14 @@ class Html_Parser(object):
 
 
     def CnproxyPraser(self, response, parser):
+        """
+        The cncnproxy response
+
+        Args:
+            self: (todo): write your description
+            response: (todo): write your description
+            parser: (todo): write your description
+        """
         proxylist = self.RegularPraser(response, parser)
         chardict = {'v': '3', 'm': '4', 'a': '2', 'l': '9', 'q': '0', 'b': '5', 'i': '7', 'w': '6', 'r': '8', 'c': '1'}
 
@@ -138,6 +152,14 @@ class Html_Parser(object):
 
 
     def proxy_listPraser(self, response, parser):
+        """
+        Parse a response
+
+        Args:
+            self: (todo): write your description
+            response: (todo): write your description
+            parser: (todo): write your description
+        """
         proxylist = []
         pattern = re.compile(parser['pattern'])
         matchs = pattern.findall(response)

@@ -14,6 +14,12 @@ import chardet
 class Html_Downloader(object):
     @staticmethod
     def download(url):
+        """
+        Download a url.
+
+        Args:
+            url: (str): write your description
+        """
         try:
             r = requests.get(url=url, headers=config.get_header(), timeout=config.TIMEOUT)
             r.encoding = chardet.detect(r.content)['encoding']
