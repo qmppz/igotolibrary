@@ -17,6 +17,12 @@ get open time
 format in database is hh:mm:ss
 '''
 def get_opentime(html_rules):
+    """
+    Get the rules from the html page
+
+    Args:
+        html_rules: (str): write your description
+    """
     if not html_rules:
         return ''
     soup = BeautifulSoup(html_rules, 'html.parser')
@@ -41,6 +47,12 @@ def get_opentime(html_rules):
 get user_name and school_name 
 '''
 def get_name(html_homepage):
+    """
+    Get user name of the user.
+
+    Args:
+        html_homepage: (str): write your description
+    """
     if not html_homepage:
         return '', ''
     soup = BeautifulSoup(html_homepage, 'html.parser')
@@ -58,6 +70,12 @@ return clssrm:list[dict]
 '''
 @utils.catch_exception
 def get_classroom(html_homepage) -> list :
+    """
+    Parse classroom. html page.
+
+    Args:
+        html_homepage: (str): write your description
+    """
     if not html_homepage:
         return []
     clssrm = []
@@ -107,6 +125,13 @@ seat_status = {
 '''
 @utils.catch_exception
 def get_seatmap(html_seatmap, return_empty_seat=False) -> dict:
+    """
+    Return a dictionary of all cells in - placemap
+
+    Args:
+        html_seatmap: (str): write your description
+        return_empty_seat: (bool): write your description
+    """
     # debug_p('html_seatmap=', html_seatmap)
     seat_map = {}
     try:
@@ -151,6 +176,23 @@ def refresh_school_info(homepage_response='', a_task: utils.Atask = object(),
                         # tb_schl_lib_stmp = 'schl_lib_stmp',
                         # platform=utils.GBCF.PLATFORM['IGTL'],
                         ) -> dict:
+    """
+    Refresh the home directory of the library information.
+
+    Args:
+        homepage_response: (str): write your description
+        a_task: (str): write your description
+        utils: (todo): write your description
+        Atask: (array): write your description
+        object: (todo): write your description
+        sess: (todo): write your description
+        object: (todo): write your description
+        m_headers: (dict): write your description
+        m_cookies: (int): write your description
+        schl_abbr: (str): write your description
+        sql_conn: (todo): write your description
+        object: (todo): write your description
+    """
     # info_dict for return
     user_conf_dict = {}
     libid_and_name = {}

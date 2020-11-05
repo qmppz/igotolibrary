@@ -67,11 +67,28 @@ class GlobalValue :
 			
 
 	def __init__(self):
+     """
+     Initialize the object
+
+     Args:
+         self: (todo): write your description
+     """
 		pass
 
 
 #订座函数
 def reserveSeatFunc(mheaders,mcookies,roomValue,seatValue,roomId,seatId):
+    """
+    Reserve a room
+
+    Args:
+        mheaders: (dict): write your description
+        mcookies: (todo): write your description
+        roomValue: (todo): write your description
+        seatValue: (todo): write your description
+        roomId: (todo): write your description
+        seatId: (todo): write your description
+    """
 
 	url_zuowei ="http://wechat.v2.traceint.com/index.php/reserve/index.html?f=wechat"
 	url_dixzixishi = "http://wechat.v2.traceint.com/index.php/reserve/layout/libid=%s.html&1524209079"%(roomValue)
@@ -119,6 +136,11 @@ def reserveSeatFunc(mheaders,mcookies,roomValue,seatValue,roomId,seatId):
 
 #判断当前时间处于的阶段 READY/RUN ,修改delay时长
 def howAboutNow():
+    """
+    Prints the number of the current time.
+
+    Args:
+    """
 	global delayTime,RUNTIME,READYTIME
 	ticks = int(time.time())
 	

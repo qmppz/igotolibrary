@@ -19,6 +19,14 @@ from util.exception import Test_URL_Fail
 
 
 def detect_from_db(myip, proxy, proxies_set):
+    """
+    Retrieve proxy information from proxy
+
+    Args:
+        myip: (todo): write your description
+        proxy: (todo): write your description
+        proxies_set: (todo): write your description
+    """
     proxy_dict = {'ip': proxy[0], 'port': proxy[1]}
     result = detect_proxy(myip, proxy_dict)
     if result:
@@ -37,6 +45,14 @@ def detect_from_db(myip, proxy, proxies_set):
 
 
 def validator(queue1, queue2, myip):
+    """
+    Execute a function that the pool.
+
+    Args:
+        queue1: (dict): write your description
+        queue2: (str): write your description
+        myip: (str): write your description
+    """
     tasklist = []
     proc_pool = {}     # 所有进程列表
     cntl_q = Queue()   # 控制信息队列
@@ -74,6 +90,15 @@ def validator(queue1, queue2, myip):
                 tasklist = []
 
 def process_start(tasks, myip, queue2, cntl):
+    """
+    Process queued tasks.
+
+    Args:
+        tasks: (array): write your description
+        myip: (str): write your description
+        queue2: (str): write your description
+        cntl: (str): write your description
+    """
     spawns = []
     for task in tasks:
         spawns.append(gevent.spawn(detect_proxy, myip, task, queue2))
@@ -132,6 +157,14 @@ def checkProxy(selfip, proxies):
 
 
 def _checkHttpProxy(selfip, proxies, isHttp=True):
+    """
+    Checks if the status is valid.
+
+    Args:
+        selfip: (todo): write your description
+        proxies: (todo): write your description
+        isHttp: (todo): write your description
+    """
     types = -1
     speed = -1
     if isHttp:
@@ -204,6 +237,11 @@ def baidu_check(selfip, proxies):
     return protocol, types, speed
 
 def getMyIP():
+    """
+    Get ip address.
+
+    Args:
+    """
     try:
         r = requests.get(url=config.TEST_IP, headers=config.get_header(), timeout=config.TIMEOUT)
         ip = json.loads(r.text)

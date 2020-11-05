@@ -29,7 +29,18 @@ if 'Darwin' == platform.system():
 decorators catch_exception
 '''
 def catch_exception(func):
+    """
+    Decorator to catch exceptions exceptions.
+
+    Args:
+        func: (callable): write your description
+    """
     def wrapper(*args, **kwargs):
+        """
+        Decorator for the function
+
+        Args:
+        """
         try:
             return func(*args, **kwargs)
         except Exception as e:
@@ -41,6 +52,13 @@ def catch_exception(func):
 get today date
 '''
 def get_date(offset=0,format='%Y%m%d_%H%M%S'):
+    """
+    Returns a string representation of the current date.
+
+    Args:
+        offset: (int): write your description
+        format: (str): write your description
+    """
     t = str(time.strftime(format, time.localtime()))
     return t
 
@@ -49,6 +67,15 @@ get ipproxy
 '''
 @catch_exception
 def get_proxy(type='', count=5, protocol=1, country=''):
+    """
+    Get a proxy
+
+    Args:
+        type: (todo): write your description
+        count: (str): write your description
+        protocol: (str): write your description
+        country: (str): write your description
+    """
 
     return {}
     # http://127.0.0.1:8000/?protocol=1&count=10&country=%E5%9B%BD%E5%86%85 #国内
@@ -182,6 +209,18 @@ class Atask(object):
     pattern = {'PRE', 'TODAY'}
     '''
     def __init__(self, platform=GBCF.PLATFORM['IGTL'], pattern=GBCF.PATTERN['PRE']):
+        """
+        Initialize the connection
+
+        Args:
+            self: (todo): write your description
+            platform: (todo): write your description
+            GBCF: (todo): write your description
+            PLATFORM: (todo): write your description
+            pattern: (str): write your description
+            GBCF: (todo): write your description
+            PATTERN: (str): write your description
+        """
 
         self.USER_CMD_SPLTCH = GBCF.USER_CMD_SPLTCH
         # self.PREPARE_TIME = 300 * 1000
@@ -382,6 +421,11 @@ debug_p
 '''
 DEBUG_MODEL = 1
 def debug_p(*args):
+    """
+    Print debug information.
+
+    Args:
+    """
     # date2ts
     # int(time.mktime(time.strptime(date, "%Y-%m-%d %H:%M:%S")))
     now_ts = time.time() # '1564905302.6147149'
@@ -396,6 +440,14 @@ operate file save or write
 return read the file content or operate status
 '''
 def operate_file(file_path='./text.txt', op_model='r', write_str='\n'):
+    """
+    .. version 1. operand
+
+    Args:
+        file_path: (str): write your description
+        op_model: (str): write your description
+        write_str: (str): write your description
+    """
     if op_model == 'a' or op_model == 'w':
         with open(file_path, op_model, encoding='utf-8') as f:
             status = f.write(write_str)
@@ -408,6 +460,18 @@ def operate_file(file_path='./text.txt', op_model='r', write_str='\n'):
 parse extra cmd
 '''
 def parse_extra_cmd(extra_cmd='', splt_ch=GBCF.USER_CMD_SPLTCH, extra_flag=GBCF.EXTRA_FLAG):
+    """
+    Parse the extra arguments.
+
+    Args:
+        extra_cmd: (str): write your description
+        splt_ch: (todo): write your description
+        GBCF: (todo): write your description
+        USER_CMD_SPLTCH: (str): write your description
+        extra_flag: (todo): write your description
+        GBCF: (todo): write your description
+        EXTRA_FLAG: (todo): write your description
+    """
     cmd_dict = {}
     # extra_cmd
     if extra_cmd:
@@ -461,6 +525,18 @@ def parse_extra_cmd(extra_cmd='', splt_ch=GBCF.USER_CMD_SPLTCH, extra_flag=GBCF.
 parse command from wechat backstage
 '''
 def parse_grab_seat_cmd(command='', splt_ch=GBCF.USER_CMD_SPLTCH, extra_flag=GBCF.EXTRA_FLAG):
+    """
+    Parse command line
+
+    Args:
+        command: (str): write your description
+        splt_ch: (str): write your description
+        GBCF: (todo): write your description
+        USER_CMD_SPLTCH: (todo): write your description
+        extra_flag: (todo): write your description
+        GBCF: (todo): write your description
+        EXTRA_FLAG: (todo): write your description
+    """
     user_cmd_len = 7# 8
     '''
     type=user
@@ -541,6 +617,13 @@ def parse_grab_seat_cmd(command='', splt_ch=GBCF.USER_CMD_SPLTCH, extra_flag=GBC
 get_key_by_value
 '''
 def get_key_by_value(value, key_dct):
+    """
+    Return the value of a key from a dict.
+
+    Args:
+        value: (todo): write your description
+        key_dct: (str): write your description
+    """
     # exe_time`s value is 06:00 or 23:59 and so on ...;  exe_time key_dct is empty
     # debug_p('### test',  value,  key_dct)
     if not key_dct:
@@ -554,6 +637,17 @@ def get_key_by_value(value, key_dct):
 get response 
 '''
 def get_response(url, sess, m_headers={}, m_cookies={}, verify_key='', platform='IGTL') -> str:
+    """
+    Get a response. : parameter.
+
+    Args:
+        url: (str): write your description
+        sess: (todo): write your description
+        m_headers: (dict): write your description
+        m_cookies: (dict): write your description
+        verify_key: (str): write your description
+        platform: (str): write your description
+    """
     Hm_lvt_key = {
         'IGTL': 'Hm_lvt_7ecd21a13263a714793f376c18038a87',
         'CTRS': 'Hm_lvt_7838cef374eb966ae9ff502c68d6f098'
@@ -598,6 +692,12 @@ get sleep time
 unit millisecond
 '''
 def get_sleep_time(start_time):
+    """
+    Return the number of a given start time.
+
+    Args:
+        start_time: (int): write your description
+    """
     offset = start_time - int(time.time()*1000)
     if offset < 5 * 1000:
         # return 0.1 * 1000
@@ -615,6 +715,14 @@ get_prepare_school
 time unit is millisecond
 '''
 def get_prepare_school(left_region=0, right_region=0, opentime_lsdict=[]) -> list:
+    """
+    Prepare the left and end timestamp.
+
+    Args:
+        left_region: (str): write your description
+        right_region: (todo): write your description
+        opentime_lsdict: (str): write your description
+    """
     # opentime_lsdict : #[{'schl_abbr':''20:10-23:59'},{}...]
     schl_dct = {}
     for schl in opentime_lsdict:
@@ -631,6 +739,14 @@ read conf with sections param
 return dict
 '''
 def read_conf(file='./test', section='', key_name='')-> dict:
+    """
+    Read configuration file.
+
+    Args:
+        file: (str): write your description
+        section: (todo): write your description
+        key_name: (str): write your description
+    """
     try:
     # if True:
         conf = configparser.ConfigParser()
@@ -822,9 +938,23 @@ class SqlAct():
 
     # init
     def __init__(self, db_name='igtl_data'):
+        """
+        Initialize a sqlite database
+
+        Args:
+            self: (todo): write your description
+            db_name: (str): write your description
+        """
         self.conn = sqlite3.connect(SqlAct.PATH+SqlAct.db_igtl_data, check_same_thread=False)
         # transfer query result to dict
         def dict_factory(cursor, row):
+            """
+            Return a dictionary of sqlite table.
+
+            Args:
+                cursor: (todo): write your description
+                row: (str): write your description
+            """
             d = {}
             for idx, col in enumerate(cursor.description):
                 d[col[0]] = row[idx]
@@ -916,6 +1046,12 @@ class SqlAct():
     '''
     @catch_exception
     def get_opentime(self):
+        """
+        Return a list of sqlite databases.
+
+        Args:
+            self: (todo): write your description
+        """
         sql_select = 'SELECT schl_abbr, open_time FROM ' + SqlAct.tb_schl_lib_stmp + ' GROUP BY schl_abbr ;'
         self.cur.execute(sql_select)
         res = self.cur.fetchall()
@@ -931,6 +1067,12 @@ class SqlAct():
     '''
     @catch_exception
     def refresh(self):
+        """
+        Refresh the connection
+
+        Args:
+            self: (todo): write your description
+        """
 
         try:
             self.conn.close()
@@ -945,6 +1087,12 @@ class SqlAct():
     '''
     @catch_exception
     def del_todaytask(self):
+        """
+        Deletes a task s tasks.
+
+        Args:
+            self: (todo): write your description
+        """
         sql_delete = ' DELETE FROM  ' + self.tb_today_task+' ;'
         self.cur.execute(sql_delete)
         self.conn.commit()
@@ -955,6 +1103,14 @@ class SqlAct():
     '''
     @catch_exception
     def update_comment(self, task_result, condition_id):
+        """
+        Updates the comment
+
+        Args:
+            self: (todo): write your description
+            task_result: (todo): write your description
+            condition_id: (str): write your description
+        """
         func_name = '[utils.update_comment]'
         sql_update = 'UPDATE ' + self.tb_origin_cmd_log + ' SET comment_info = \'' + \
                      task_result + '\'' + ' WHERE id=' + str(condition_id) + ';'
@@ -969,6 +1125,14 @@ class SqlAct():
     '''
     @catch_exception
     def get_ready_task(self, start_ts=1570245000000, end_ts=1570245120000):
+        """
+        Returns a task object for the task
+
+        Args:
+            self: (todo): write your description
+            start_ts: (todo): write your description
+            end_ts: (todo): write your description
+        """
 
         start_date = time.strftime("%Y-%m-%d %H:%M:%S",  time.localtime(start_ts//1000)).split()[1]
         end_date = time.strftime("%Y-%m-%d %H:%M:%S",  time.localtime(end_ts//1000)).split()[1]
@@ -1029,13 +1193,36 @@ memcache
 class MyMemcache(object):
 
     def __init__(self, ip='localhost', port=11211):
+        """
+        Init a new serializer.
+
+        Args:
+            self: (todo): write your description
+            ip: (str): write your description
+            port: (int): write your description
+        """
         # json_serializer(key, value)
         def json_serializer(key, value):
+            """
+            Convert a serializer.
+
+            Args:
+                key: (str): write your description
+                value: (todo): write your description
+            """
             if type(value) == str:
                 return value, 1
             return json.dumps(value), 2
         # json_deserializer(key, value, flags) python3
         def json_deserializer(key, value, flags):
+            """
+            Deserialize the given value.
+
+            Args:
+                key: (str): write your description
+                value: (todo): write your description
+                flags: (todo): write your description
+            """
             if flags == 1:
                 return value.decode('utf-8')
             if flags == 2:
@@ -1056,6 +1243,14 @@ class MyMemcache(object):
     '''
     @catch_exception
     def set_value(self, key, value):
+        """
+        Sets the value of a key.
+
+        Args:
+            self: (todo): write your description
+            key: (str): write your description
+            value: (todo): write your description
+        """
         # set(key, value, expire=0, noreply=None, flags=None)
         # result = "-".join(result.split())
         expire_second = int(60 * 60 * 24 * 1.2) # expire_second must int
@@ -1068,6 +1263,14 @@ class MyMemcache(object):
     '''
     @catch_exception
     def get_value(self, key, default=''):
+        """
+        Returns the value of a key.
+
+        Args:
+            self: (todo): write your description
+            key: (str): write your description
+            default: (todo): write your description
+        """
         result = self.client.get(key=key, default=default)
 
         debug_p('[get_value]', key, result)
@@ -1078,6 +1281,12 @@ class MyMemcache(object):
     close
     '''
     def client_close(self):
+        """
+        Closes the connection.
+
+        Args:
+            self: (todo): write your description
+        """
         try:
             self.client.close()
         except Exception as e:

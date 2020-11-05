@@ -60,11 +60,26 @@ class GlobalValue :
 	DICT_ROOM_KV={"ROOM_1":"323","ROOM_2":"324"}
 
 	def __init__(self):
+     """
+     Initialize the object
+
+     Args:
+         self: (todo): write your description
+     """
 		pass
 
 
 #订座函数
 def reserveSeatFunc(mheaders,mcookies,roomId,seatId):
+    """
+    Reserve the room
+
+    Args:
+        mheaders: (dict): write your description
+        mcookies: (todo): write your description
+        roomId: (todo): write your description
+        seatId: (todo): write your description
+    """
 
 	gv = GlobalValue()
 	roomValue = gv.DICT_ROOM_KV["ROOM_1" if roomId == "1" else "ROOM_2" ]
@@ -123,6 +138,11 @@ def reserveSeatFunc(mheaders,mcookies,roomId,seatId):
 
 #判断当前时间处于的阶段 READY/RUN ,修改delay时长
 def howAboutNow():
+    """
+    Prints the number of the given delay.
+
+    Args:
+    """
 	global delayTime,RUNTIME,READYTIME
 	ticks = int(time.time())
 	

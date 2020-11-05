@@ -17,6 +17,16 @@ start grab seat py
 '''
 @utils.catch_exception
 def start_grab_thread(thread_cnt, task_info_ls=[], task_kind=CF.TASK_KIND['reserve']):
+    """
+    Starts a thread.
+
+    Args:
+        thread_cnt: (int): write your description
+        task_info_ls: (todo): write your description
+        task_kind: (todo): write your description
+        CF: (todo): write your description
+        TASK_KIND: (todo): write your description
+    """
     # os.system("python  ocr_number.py "+ str(p))
     func_name = '[main_loop.start_grab]'
 
@@ -46,6 +56,14 @@ check if need dormancy
 return millisecond
 '''
 def check_dormancy(next_awaken=0, dormancy_s_str='01:00:00', dormancy_e_str='05:00:00'):
+    """
+    Checks if the dormancy
+
+    Args:
+        next_awaken: (str): write your description
+        dormancy_s_str: (str): write your description
+        dormancy_e_str: (str): write your description
+    """
     func_name = '[mainloop.check_dormancy]'
     # unit is millisecond
     now_time = int(time.time() * 1000)
@@ -72,6 +90,13 @@ get_next_awaken ,
 return millisecond 
 '''
 def get_next_awaken(offset = 60 * 3, init_time='00:00:30'):
+    """
+    Gets the next hour
+
+    Args:
+        offset: (int): write your description
+        init_time: (int): write your description
+    """
     # unit second
     today_00_00_30_ts = int(time.mktime(time.strptime(utils.get_date(format='%Y%m%d ') + init_time, "%Y%m%d %H:%M:%S")))
     # offset = 60 * 4
@@ -89,6 +114,11 @@ def get_next_awaken(offset = 60 * 3, init_time='00:00:30'):
 main loop
 '''
 def main_loop():
+    """
+    The main loop.
+
+    Args:
+    """
     func_name = '[main_loop]'
     debug_p(func_name, 'start main loop...')
 

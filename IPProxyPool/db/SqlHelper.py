@@ -35,6 +35,12 @@ class SqlHelper(ISqlHelper):
               'country': Proxy.country, 'area': Proxy.area, 'score': Proxy.score}
 
     def __init__(self):
+        """
+        Create a new engine.
+
+        Args:
+            self: (todo): write your description
+        """
         if 'sqlite' in DB_CONFIG['DB_CONNECT_STRING']:
             connect_args = {'check_same_thread': False}
             self.engine = create_engine(DB_CONFIG['DB_CONNECT_STRING'], echo=False, connect_args=connect_args)
@@ -44,13 +50,32 @@ class SqlHelper(ISqlHelper):
         self.session = DB_Session()
 
     def init_db(self):
+        """
+        Initialize database.
+
+        Args:
+            self: (todo): write your description
+        """
         BaseModel.metadata.create_all(self.engine)
 
     def drop_db(self):
+        """
+        Drop all tables in the database.
+
+        Args:
+            self: (todo): write your description
+        """
         BaseModel.metadata.drop_all(self.engine)
 
 
     def insert(self, value):
+        """
+        Insert a session to the area.
+
+        Args:
+            self: (todo): write your description
+            value: (todo): write your description
+        """
         proxy = Proxy(ip=value['ip'], port=value['port'], types=value['types'], protocol=value['protocol'],
                       country=value['country'],
                       area=value['area'], speed=value['speed'])
@@ -59,6 +84,13 @@ class SqlHelper(ISqlHelper):
 
 
     def delete(self, conditions=None):
+        """
+        Deletes conditions matching conditions.
+
+        Args:
+            self: (todo): write your description
+            conditions: (dict): write your description
+        """
         if conditions:
             conditon_list = []
             for key in list(conditions.keys()):
@@ -134,6 +166,12 @@ class SqlHelper(ISqlHelper):
 
 
     def close(self):
+        """
+        Close the connection.
+
+        Args:
+            self: (todo): write your description
+        """
         pass
 
 

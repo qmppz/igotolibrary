@@ -22,6 +22,14 @@ from validator.Validator import validator, getMyIP, detect_from_db
 
 
 def startProxyCrawl(queue, db_proxy_num,myip):
+    """
+    Start the given queue.
+
+    Args:
+        queue: (todo): write your description
+        db_proxy_num: (int): write your description
+        myip: (int): write your description
+    """
     crawl = ProxyCrawl(queue, db_proxy_num,myip)
     crawl.run()
 
@@ -30,6 +38,15 @@ class ProxyCrawl(object):
     proxies = set()
 
     def __init__(self, queue, db_proxy_num,myip):
+        """
+        Initialize the queue.
+
+        Args:
+            self: (todo): write your description
+            queue: (todo): write your description
+            db_proxy_num: (int): write your description
+            myip: (str): write your description
+        """
         self.crawl_pool = Pool(THREADNUM)
         self.queue = queue
         self.db_proxy_num = db_proxy_num
@@ -37,6 +54,12 @@ class ProxyCrawl(object):
 
 
     def run(self):
+        """
+        The main loop.
+
+        Args:
+            self: (todo): write your description
+        """
         while True:
             self.proxies.clear()
             str = 'IPProxyPool----->>>>>>>>beginning'
@@ -73,6 +96,13 @@ class ProxyCrawl(object):
             time.sleep(UPDATE_TIME)
 
     def crawl(self, parser):
+        """
+        Crawl the given parser.
+
+        Args:
+            self: (todo): write your description
+            parser: (todo): write your description
+        """
         html_parser = Html_Parser()
         for url in parser['urls']:
             response = Html_Downloader.download(url)

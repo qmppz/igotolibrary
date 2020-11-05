@@ -10,32 +10,84 @@ from db.SqlHelper import Proxy
 
 class RedisHelper(ISqlHelper):
     def __init__(self, url=None):
+        """
+        Initialize redis.
+
+        Args:
+            self: (todo): write your description
+            url: (str): write your description
+        """
         self.index_names = ('types', 'protocol', 'country', 'area', 'score')
         self.redis_url = url or config.DB_CONFIG['DB_CONNECT_STRING']
 
     def get_proxy_name(self, ip=None, port=None, protocal=None, proxy=None):
+        """
+        Return the name of a proxy.
+
+        Args:
+            self: (todo): write your description
+            ip: (str): write your description
+            port: (int): write your description
+            protocal: (str): write your description
+            proxy: (str): write your description
+        """
         ip = ip or proxy.ip
         port = port or proxy.port
         protocal = protocal or proxy.protocol
         return "proxy::{}:{}:{}".format(ip, port, protocal)
 
     def get_index_name(self, index_name, value=None):
+        """
+        Returns the index name for the given index.
+
+        Args:
+            self: (todo): write your description
+            index_name: (str): write your description
+            value: (str): write your description
+        """
         if index_name == 'score':
             return 'index::score'
         return "index::{}:{}".format(index_name, value)
 
     def get_proxy_by_name(self, name):
+        """
+        Get proxy by name
+
+        Args:
+            self: (todo): write your description
+            name: (str): write your description
+        """
         pd = self.redis.hgetall(name)
         if pd:
             return Proxy(**{k.decode('utf8'): v.decode('utf8') for k, v in pd.items()})
 
     def init_db(self, url=None):
+        """
+        Initialize a redis connection.
+
+        Args:
+            self: (todo): write your description
+            url: (str): write your description
+        """
         self.redis = Redis.from_url(url or self.redis_url)
 
     def drop_db(self):
+        """
+        Drop the database.
+
+        Args:
+            self: (todo): write your description
+        """
         return self.redis.flushdb()
 
     def get_keys(self, conditions):
+        """
+        Return a list of conditions.
+
+        Args:
+            self: (todo): write your description
+            conditions: (str): write your description
+        """
         select_keys = {self.get_index_name(key, conditions[key]) for key in conditions.keys() if
                        key in self.index_names}
         if 'ip' in conditions and 'port' in conditions:
@@ -45,6 +97,13 @@ class RedisHelper(ISqlHelper):
         return []
 
     def insert(self, value):
+        """
+        Insert an item at index.
+
+        Args:
+            self: (todo): write your description
+            value: (dict): write your description
+        """
         proxy = Proxy(ip=value['ip'], port=value['port'], types=value['types'], protocol=value['protocol'],
                       country=value['country'], area=value['area'],
                       speed=value['speed'], score=value.get('score', config.DEFAULT_SCORE))
@@ -62,12 +121,28 @@ class RedisHelper(ISqlHelper):
         return insert_num
 
     def create_index(self, index_name, object_name, proxy):
+        """
+        Creates an index.
+
+        Args:
+            self: (todo): write your description
+            index_name: (str): write your description
+            object_name: (str): write your description
+            proxy: (str): write your description
+        """
         redis_key = self.get_index_name(index_name, getattr(proxy, index_name))
         if index_name == 'score':
             return self.redis.zadd(redis_key, object_name, int(proxy.score))
         return self.redis.sadd(redis_key, object_name)
 
     def delete(self, conditions):
+        """
+        Delete the given conditions from the given conditions.
+
+        Args:
+            self: (todo): write your description
+            conditions: (todo): write your description
+        """
         proxy_keys = self.get_keys(conditions)
         index_keys = self.redis.keys(u"index::*")
         if not proxy_keys:
@@ -81,6 +156,14 @@ class RedisHelper(ISqlHelper):
         return self.redis.delete(*proxy_keys) if proxy_keys else 0
 
     def update(self, conditions, values):
+        """
+        Updates the set with the count.
+
+        Args:
+            self: (todo): write your description
+            conditions: (todo): write your description
+            values: (dict): write your description
+        """
         objects = self.get_keys(conditions)
         count = 0
         for name in objects:
@@ -93,6 +176,14 @@ class RedisHelper(ISqlHelper):
         return count
 
     def select(self, count=None, conditions=None):
+        """
+        Return a sorted set of sorted by score.
+
+        Args:
+            self: (todo): write your description
+            count: (int): write your description
+            conditions: (dict): write your description
+        """
         count = (count and int(count)) or 1000  # 最多返回1000条数据
         count = 1000 if count > 1000 else count
 
