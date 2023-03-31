@@ -5,5 +5,5 @@ lxml==3.7.1
 requests==2.20.0
 SQLAlchemy==1.1.4
 web.py==0.38
-redis==2.10.5
+redis==4.4.4
 psutil
